@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./src/css/pie.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./index.js" type="text/javascript"></script>
+    <style>
+        /* Parallax effect CSS */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url(img.jpg) fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .parallax-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .parallax-content {
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Rest of the styles */
+        .chart-container {
+            display: inline-block;
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+        }
+
+        .party-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .party-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .party-item span {
+            font-weight: bold;
+        }
+
+        .download-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 4px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Navigation-->
+    <header id="header">
+        <nav class="links" style="--items: 5;">
+            <a href="./Results.html">Results</a>
+            <a href="./VoterVerification1.html">Voter Image Verification</a>
+            <a href="./VoterVerification2.html">Voter Adhaar Verification</a>
+            <a href="./VotingPortal.html">Voting Portal</a>
+            <a href="./AdminVerification1.html">KYC-VOTERLIST</a>
+            <span class="line"></span>
+        </nav>
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="parallax-section">
+        <div class="parallax-content">
+            <br>
+            
+            <center>
+                <button onclick="loadChart()" id="button3" class="button1">Show Results</button>
+                <div id="votedResults" class="container" style="margin-top: 50px;"></div>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                    <button onclick="saveChart('pieChart')" class="download-button">Download Pie Chart</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                    <button onclick="saveChart('barChart')" class="download-button">Download Bar Chart</button>
+                </div>
+            </center>
+        </div>
+    </div>
+
+    <script>
+        // Sample data
+        var partyData = {
+            labels: ['Party A', 'Party B', 'Party C'],
+            datasets: [{
+                data: [300, 150, 200],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)'
+                ],
+                borderWidth: 0
+            }]
+        };
+
+        // Pie chart
+        var pieChart = document.getElementById('pieChart').getContext('2d');
+        var chartInstance1;
+        function loadPieChart() {
+            chartInstance1 = new Chart(pieChart, {
+                type: 'pie',
+                data: partyData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: {
+                        display: true,
+                        text: 'Party Votes'
+                    }
+                }
+            });
+        }
+
+        // Bar chart
+        var barChart = document.getElementById('barChart').getContext('2d');
+        var chartInstance2;
+        function loadBarChart() {
+            chartInstance2 = new Chart(barChart, {
+                type: 'bar',
+                data: partyData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: {
+                        display: true,
+                        text: 'Party Votes'
+                    },
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                display: false
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                display: false
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        function loadChart() {
+            loadPieChart();
+            loadBarChart();
+        }
+
+        function saveChart(chartId) {
+            var canvas = document.getElementById(chartId);
+            var dataURL = canvas.toDataURL('image/png');
+            var link = document.createElement('a');
+            link.href = dataURL;
+            link.download = chartId + '.png';
+            link.click();
+        }
+    </script>
+</body>
+</html>

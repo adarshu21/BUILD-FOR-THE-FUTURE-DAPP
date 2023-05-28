@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./src/css/splash.css" />
+    <link rel="stylesheet" href="./src/css/nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            color: #eee;
+            font-family: 'Lato', sans-serif;
+            font-size: 62.5%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .content {
+            background-color: #fff;
+            border-radius: 8px;
+            box-sizing: border-box;
+            color: #666;
+            font-size: 1.6em;
+            line-height: 1.4em;
+            margin: 20px auto;
+            margin-top: 80px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .content ul {
+            margin: .5em 2em;
+            padding: 0;
+        }
+
+        #footer {
+            background-color: #246c;
+            background-image: linear-gradient(to bottom, transparent, #0009);
+            border-top: 1px solid #fff3;
+            box-shadow: inset 0 1px 0 #fff3, 0 0 32px #000;
+            overflow: hidden;
+            padding: 8px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9001;
+        }
+
+        #footer a {
+            color: #85c6f6;
+            padding: 1em 0;
+            text-decoration: none;
+        }
+
+        #footer ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: 300;
+        }
+
+        #footer ul li {
+            padding: 0 .5em;
+        }
+
+        .parallax-container {
+            height: 50vh; /* Adjust the height as per your requirement */
+            position: relative;
+        }
+
+        .parallax-container .parallax img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .glow {
+            color: white;
+            font-size: 3rem; /* Adjust the font-size as per your requirement */
+            margin-top: 10vh; /* Adjust the margin-top as per your requirement */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">E-VOTING</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./VoterVerification1.html">Voter Image Verification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./VoterVerification2.html">Voter Adhaar Verification</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./VotingPortal.html">Voting Portal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./AdminVerification1.html">KYC-VOTER LIST</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Results.html">Results</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="img.jpg" alt="Background Image 1">
+        </div>
+        <main class="valign-wrapper">
+            <div class="container grey-text text-lighten-1">
+                <center>
+                    <h1 class="glow">E-VOTING</h1>
+                </center>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var parallax = document.querySelectorAll('.parallax');
+            M.Parallax.init(parallax);
+        });
+    </script>
+</body>
+
+</html>
